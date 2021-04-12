@@ -35,6 +35,11 @@
   resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-14.14.37.tgz?cache=0&sync_timestamp=1616803552865&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-14.14.37.tgz#a3dd8da4eb84a996c36e331df98d82abd76b516e"
   integrity sha1-o92NpOuEqZbDbjMd+Y2Cq9drUW4=
 
+async@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npm.taobao.org/async/download/async-3.2.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fasync%2Fdownload%2Fasync-3.2.0.tgz#b3a2685c5ebb641d3de02d161002c60fc9f85720"
+  integrity sha1-s6JoXF67ZB094C0WEALGD8n4VyA=
+
 boolean@^3.0.1:
   version "3.0.3"
   resolved "https://registry.npm.taobao.org/boolean/download/boolean-3.0.3.tgz#0fee0c9813b66bef25a8a6a904bb46736d05f024"
