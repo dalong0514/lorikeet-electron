@@ -1,70 +1,17 @@
 'use strict'
 
 // Node.js’s fs module loads in the app
-const osenv = require('osenv')
-const fs = require('fs')
-const async = require('async')
-const path = require('path')
-
-function getUsersHomeFolder() {
-  return osenv.home()
-}
-
-// Simple wrapper around the fs.readdir function for getting list of files
-function getFilesInFolder(folderPath, cb) {
-  fs.readdir(folderPath, cb)
-}
-
-// Uses path module to get name for file
-function inspectAndDescribeFile(filePath, cb) {
-  let result = {
-    file: path.basename(filePath),
-    path: filePath,
-    type: ''
-  }
-  // fs.stat call supplies an object you can query to find out file’s type
-  fs.stat(filePath, (err, stat) => {
-    if (err) cb(err)
-    if (stat.isFile()) result.type = 'file'
-    if (stat.isDirectory()) result.type = 'directory'
-    cb(err, result)
-  })
-}
-
-// Uses async module to call asynchronous function and collects results together
-function inspectAndDescribeFiles(folderPath, files, cb) {
-  async.map(files, (file, asyncCb) => {
-    let resolvedFilePath = path.resolve(folderPath, file)
-    inspectAndDescribeFile(resolvedFilePath, asyncCb)
-  }, cb)
-}
-
-// Adds new function called displayFile that handles rendering template instance
-function displayFile(file) {
-  const mainArea = document.getElementById('main-area')
-  const template = document.querySelector('#item-template')
-  // Creates copy of template instance
-  let clone = document.importNode(template.content, true)
-  // Alters instance to include file’s name and icon
-  clone.querySelector('img').src = `images/${file.type}.svg`
-  clone.querySelector('.filename').innerText = file.file
-  // Appends template instance to "mainarea" div element
-  mainArea.appendChild(clone)
-}
-
-// Creates displayFiles function to be end point where files will end up being displayed
-function displayFiles(err, files) {
-  if (err) return alert('Sorry, we could not display your files')
-  files.forEach(displayFile)
-}
+const fileSystem = require('./fileSystem')
+const userInterface = require('./userInterface')
 
 // Function that combines user’s personal folder path with getting its list of files
 function main() {
-  const folderPath = getUsersHomeFolder()
-  getFilesInFolder(folderPath, (err, files) => {
+  userInterface.bindDocument(window)
+  const folderPath = fileSystem.getUsersHomeFolder()
+  fileSystem.getFilesInFolder(folderPath, (err, files) => {
     // Simple message to display in case of error loading folder’s files
     if (err) return alert('Sorry, we could not load your home folder')
-    inspectAndDescribeFiles(folderPath, files, displayFiles)
+    fileSystem.inspectAndDescribeFiles(folderPath, files, userInterface.displayFiles)
   })
 }
 
