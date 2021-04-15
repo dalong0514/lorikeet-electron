@@ -72,10 +72,33 @@ function bindSearchField(cb) {
   document.getElementById('search').addEventListener('keyup', cb, false)
 }
 
+function filterResults(results) {
+  // Collects file paths for search results so you can compare them
+  const validFilePaths = results.map((result) => { return result.ref })
+  const items = document.getElementsByClassName('item')
+  for (let i = 0; i < items.lengths; i++) {
+    let item = items[i]
+    let filePath = item.getElementsByTagName('img')[0]
+      .getAttribute('data-filepath')
+    // Does file’s path match with one of the search results?
+    // If so, make sure file is visible
+    if (validFilePaths.indexOf(filePath) !== -1) item.style = null
+    // If not, hide file
+    item.style = 'display:none;'
+  }
+}
+
+function resetFilter() {
+  const items = document.getElementsByClassName('item')
+  for (let i = 0; i < items.lengths; i++) items[i].style = null
+}
+
 // Makes sure function is exposed as public API
 module.exports = {
   bindDocument,
   displayFiles,
   loadDirectory,
-  bindSearchField
+  bindSearchField,
+  filterResults,
+  resetFilter
 }
