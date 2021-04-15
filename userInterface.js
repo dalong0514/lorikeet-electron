@@ -2,6 +2,7 @@
 
 let document
 const fileSystem = require('./fileSystem')
+const search = require('./search')
 
 // Adds function to display current folder
 function displayFolderPath(folderPath) {
@@ -22,6 +23,8 @@ function clearView() {
 function loadDirectory(folderPath) {
   return function (window) {
     if (!document) document = window.document
+    // Adds the call to reset the search index
+    search.resetIndex()
     displayFolderPath(folderPath)
     fileSystem.getFilesInFolder(folderPath, (err, files) => {
       clearView()
@@ -37,8 +40,12 @@ function displayFile(file) {
   const template = document.querySelector('#item-template')
   // Creates copy of template instance
   let clone = document.importNode(template.content, true)
+  // Adds file to search index here
+  search.addToIndex(file)
   // Alters instance to include file’s name and icon
   clone.querySelector('img').src = `images/${file.type}.svg`
+  // Attaches file’s path as data attribute to image element
+  clone.querySelector('img').setAttribute('data-filePath', file.path)
   // Adds double-click event listener to icon if it’s for a directory
   if (file.type === 'directory') {
     clone.querySelector('img')
