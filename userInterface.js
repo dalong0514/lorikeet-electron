@@ -61,9 +61,14 @@ function bindDocument (window) {
   if (!document) document = window.document
 }
 
-// Makes sure loadDirectory function is exposed as public API
+function bindSearchField(cb) {
+  document.getElementById('search').addEventListener('keyup', cb, false)
+}
+
+// Makes sure function is exposed as public API
 module.exports = {
   bindDocument,
   displayFiles,
-  loadDirectory
+  loadDirectory,
+  bindSearchField
 }
