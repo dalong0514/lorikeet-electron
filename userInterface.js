@@ -3,6 +3,7 @@
 let document
 const fileSystem = require('./fileSystem')
 const search = require('./search')
+const path = require('path');
 
 // Adds function to display current folder
 function displayFolderPath(folderPath) {
@@ -92,6 +93,17 @@ function filterResults(results) {
 function resetFilter() {
   const items = document.getElementsByClassName('item')
   for (let i = 0; i < items.length; i++) items[i].style = null
+}
+
+function convertFolderPathIntoLinks(folderPath) {
+  const folders = folderPath.split(path.sep)
+  const contents = []
+  let pathAtFolder = ''
+  folders.forEach((folder) => {
+    pathAtFolder += folder + path.sep
+    contents.push(`<span class="path" data-path="${pathAtFolder.slice(0,-1)}">${folder}</span>`)
+  })
+  return contents.join(path.sep).toString()
 }
 
 // Makes sure function is exposed as public API
