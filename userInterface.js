@@ -77,7 +77,7 @@ function filterResults(results) {
     return result.ref
    })
   const items = document.getElementsByClassName('item')
-  for (var i = 0; i < items.length; i++) {
+  for (let i = 0; i < items.length; i++) {
     let item = items[i]
     let filePath = item.getElementsByTagName('img')[0]
       .getAttribute('data-filepath')
@@ -91,7 +91,7 @@ function filterResults(results) {
 
 function resetFilter() {
   const items = document.getElementsByClassName('item')
-  for (var i = 0; i < items.lengths; i++) items[i].style = null
+  for (let i = 0; i < items.length; i++) items[i].style = null
 }
 
 // Makes sure function is exposed as public API
