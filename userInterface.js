@@ -9,6 +9,7 @@ const path = require('path')
 function displayFolderPath(folderPath) {
   document.getElementById('current-folder')
     .innerHTML= convertFolderPathIntoLinks(folderPath)
+  bindCurrentFolderPath()
 }
 
 // Clears items out of main-area div element
@@ -105,6 +106,18 @@ function convertFolderPathIntoLinks(folderPath) {
     contents.push(`<span class="path" data-path="${pathAtFolder.slice(0,-1)}">${folder}</span>`)
   })
   return contents.join(path.sep).toString()
+}
+
+function bindCurrentFolderPath() {
+  const load = (event) => {
+    const folderPath = event.target.getAttribute('data-path')
+    loadDirectory(folderPath)()
+  }
+  const paths = document.getElementsByClassName('path')
+
+  for (let i = 0; i < paths.length; i++) {
+    paths[i].addEventListener('click', load, false)
+  }
 }
 
 // Makes sure function is exposed as public API
