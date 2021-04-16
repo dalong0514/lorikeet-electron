@@ -3,7 +3,7 @@
 let document
 const fileSystem = require('./fileSystem')
 const search = require('./search')
-const path = require('path');
+const path = require('path')
 
 // Adds function to display current folder
 function displayFolderPath(folderPath) {

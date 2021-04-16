@@ -10,6 +10,7 @@ module.exports = {
     },
     "rules": {
         "space-before-function-paren": [2, "never"],
+        'semi': [2, 'never'],
         "no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
     }
 };
