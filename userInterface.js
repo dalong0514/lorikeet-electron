@@ -7,7 +7,8 @@ const path = require('path')
 
 // Adds function to display current folder
 function displayFolderPath(folderPath) {
-  document.getElementById('current-folder').innerText = folderPath
+  document.getElementById('current-folder')
+    .innerHTML= convertFolderPathIntoLinks(folderPath)
 }
 
 // Clears items out of main-area div element
