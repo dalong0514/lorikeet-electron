@@ -340,10 +340,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-lunr@^2.3.9:
-  version "2.3.9"
-  resolved "https://registry.npm.taobao.org/lunr/download/lunr-2.3.9.tgz#18b123142832337dd6e964df1a5a7707b25d35e1"
-  integrity sha1-GLEjFCgyM33W6WTfGlp3B7JdNeE=
+lunr@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.npm.taobao.org/lunr/download/lunr-0.7.2.tgz#79a30e932e216cba163541ee37a3607c12cd7281"
+  integrity sha1-eaMOky4hbLoWNUHuN6NgfBLNcoE=
 
 matcher@^3.0.0:
   version "3.0.0"

@@ -14,12 +14,7 @@ function resetIndex() {
 
 // Adds file to index for searching against
 function addToIndex(file) {
-  // index.add(file)
-  index = lunr(function () {
-    this.field('file')
-    this.ref('path')
-    this.add(file)
-  })
+  index.add(file)
 }
 
 // Queries index for a given file here

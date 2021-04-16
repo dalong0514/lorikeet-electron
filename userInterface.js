@@ -34,7 +34,6 @@ function loadDirectory(folderPath) {
   }
 }
 
-// Adds new function called displayFile that handles rendering template instance
 function displayFile(file) {
   const mainArea = document.getElementById('main-area')
   const template = document.querySelector('#item-template')
@@ -78,7 +77,7 @@ function filterResults(results) {
     return result.ref
    })
   const items = document.getElementsByClassName('item')
-  for (var i = 0; i < items.lengths; i++) {
+  for (var i = 0; i < items.length; i++) {
     let item = items[i]
     let filePath = item.getElementsByTagName('img')[0]
       .getAttribute('data-filepath')
