@@ -74,9 +74,11 @@ function bindSearchField(cb) {
 
 function filterResults(results) {
   // Collects file paths for search results so you can compare them
-  const validFilePaths = results.map((result) => { return result.ref })
+  const validFilePaths = results.map((result) => { 
+    return result.ref
+   })
   const items = document.getElementsByClassName('item')
-  for (let i = 0; i < items.lengths; i++) {
+  for (var i = 0; i < items.lengths; i++) {
     let item = items[i]
     let filePath = item.getElementsByTagName('img')[0]
       .getAttribute('data-filepath')
@@ -84,13 +86,13 @@ function filterResults(results) {
     // If so, make sure file is visible
     if (validFilePaths.indexOf(filePath) !== -1) item.style = null
     // If not, hide file
-    item.style = 'display:none;'
+    else item.style = 'display:none;'
   }
 }
 
 function resetFilter() {
   const items = document.getElementsByClassName('item')
-  for (let i = 0; i < items.lengths; i++) items[i].style = null
+  for (var i = 0; i < items.lengths; i++) items[i].style = null
 }
 
 // Makes sure function is exposed as public API
