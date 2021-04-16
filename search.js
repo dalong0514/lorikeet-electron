@@ -5,7 +5,7 @@ let index
 
 // resetIndex function resets search index
 function resetIndex() {
-  index = lunr(function () {
+  index = lunr(function() {
     this.field('file')
     this.field('type')
     this.ref('path')

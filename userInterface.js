@@ -22,7 +22,7 @@ function clearView() {
 
 // loadDirectory changes current folder path and updates main area
 function loadDirectory(folderPath) {
-  return function (window) {
+  return function(window) {
     if (!document) document = window.document
     // Adds the call to reset the search index
     search.resetIndex()
@@ -64,7 +64,7 @@ function displayFiles(err, files) {
   files.forEach(displayFile)
 }
 
-function bindDocument (window) {
+function bindDocument(window) {
   if (!document) document = window.document
 }
 
